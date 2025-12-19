@@ -8,8 +8,8 @@
 #include "hx8347g.h"
 #include "hx8357x.h"
 
-gpio_reg_map * cntrlRegs;
-gpio_reg_map * dataRegs;
+GPIO_TypeDef * cntrlRegs;
+GPIO_TypeDef * dataRegs;
 
 /*****************************************************************************/
 // Constructor
@@ -58,8 +58,8 @@ void Adafruit_TFTLCD_8bit_STM32::begin(uint16_t id)
 /*****************************************************************************/
 void Adafruit_TFTLCD_8bit_STM32::reset(void)
 {
-	cntrlRegs = TFT_CNTRL_PORT->regs;
-	dataRegs = TFT_DATA_PORT->regs;
+	cntrlRegs = TFT_CNTRL_PORT;
+	dataRegs = TFT_DATA_PORT;
 	//Set control lines as output
 	//cntrlRegs->CRL = (cntrlRegs->CRL & 0xFFFF0000) | 0x00003333;
 	pinMode(TFT_RD, OUTPUT);

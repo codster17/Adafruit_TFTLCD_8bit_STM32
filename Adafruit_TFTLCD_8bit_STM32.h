@@ -6,7 +6,7 @@
 
 #include <Adafruit_GFX.h>
 
-#include <libmaple/gpio.h>
+//#include <libmaple/gpio.h>   // REMOVE THIS
 
 /*****************************************************************************/
 // Define pins and Output Data Registers
@@ -24,10 +24,10 @@
 #define TFT_RS			PA2
 #define TFT_CS			PA3
 
-#define TFT_RD_MASK		BIT0 // digitalPinToBitMask(TFT_RD) // 
-#define TFT_WR_MASK		BIT1 // digitalPinToBitMask(TFT_WR) // 
-#define TFT_RS_MASK		BIT2 // digitalPinToBitMask(TFT_RS) // 
-#define TFT_CS_MASK		BIT3 // digitalPinToBitMask(TFT_CS) // 
+#define TFT_RD_MASK  (1 << 0)  // PA0
+#define TFT_WR_MASK  (1 << 1)  // PA1
+#define TFT_RS_MASK  (1 << 2)  // PA2
+#define TFT_CS_MASK  (1 << 3)  // PA3
 
 #define TFT_RST			PB10
 
@@ -55,14 +55,14 @@
 #define Color565 color565
 
 /*****************************************************************************/
-#define	BLACK   0x0000
-#define	BLUE    0x001F
-#define	RED     0xF800
-#define	GREEN   0x07E0
-#define CYAN    0x07FF
-#define MAGENTA 0xF81F
-#define YELLOW  0xFFE0
-#define WHITE   0xFFFF
+#define	ILI9341_BLACK   0x0000
+#define	ILI9341_BLUE    0x001F
+#define	ILI9341_RED     0xF800
+#define	ILI9341_GREEN   0x07E0
+#define ILI9341_CYAN    0x07FF
+#define ILI9341_MAGENTA 0xF81F
+#define ILI9341_YELLOW  0xFFE0
+#define ILI9341_WHITE   0xFFFF
 
 
 	#define RD_ACTIVE    digitalWrite(TFT_RD, LOW)
@@ -78,7 +78,7 @@
 	#define CS_ACTIVE_CD_COMMAND	{ CS_ACTIVE; CD_COMMAND; }
 #else
 	// use fast bit toggling, very fast speed!
-extern gpio_reg_map * cntrlRegs;
+extern GPIO_TypeDef * cntrlRegs;
 	#define WR_ACTIVE				{ cntrlRegs->BRR  = TFT_WR_MASK; }
 	#define WR_IDLE					{ cntrlRegs->BSRR = TFT_WR_MASK; }
 	#define CD_COMMAND				{ cntrlRegs->BRR  = TFT_RS_MASK; }
@@ -93,7 +93,7 @@ extern gpio_reg_map * cntrlRegs;
 extern uint8_t read8_(void);
 #define read8(x) ( x = read8_() )
 
-extern gpio_reg_map * dataRegs;
+extern GPIO_TypeDef * dataRegs;
 
 #if (TFT_DATA_SHIFT==0)
   //#warning "Using lower data nibble..."
