@@ -192,7 +192,7 @@ void ili932x_drawPixel(int16_t x, int16_t y, uint16_t color)
 }
 
 /*****************************************************************************/
-void ili932x_invertDisplay(boolean i)
+void ili932x_invertDisplay(bool i)
 {
 	//uint16_t r = readReg(ILI932X_GATE_SCAN_CTRL2);
 	//r = i ? (r&BIT0) : (r|BIT0);

@@ -335,7 +335,7 @@ void Adafruit_TFTLCD_8bit_STM32::drawBitmap(int16_t x, int16_t y, int16_t w, int
 // previously been set to define the bounds.  Max 255 pixels at
 // a time (BMP examples read in small chunks due to limited RAM).
 /*****************************************************************************/
-void Adafruit_TFTLCD_8bit_STM32::pushColors(uint16_t *data, int16_t len, boolean first)
+void Adafruit_TFTLCD_8bit_STM32::pushColors(uint16_t *data, int16_t len, bool first)
 {
   uint16_t color;
   uint8_t  hi, lo;
@@ -361,7 +361,7 @@ void Adafruit_TFTLCD_8bit_STM32::pushColors(uint16_t *data, int16_t len, boolean
 }
 
 /*****************************************************************************/
-void Adafruit_TFTLCD_8bit_STM32::invertDisplay(boolean i)
+void Adafruit_TFTLCD_8bit_STM32::invertDisplay(bool i)
 {
 	if ( driver==ID_932X ) ili932x_invertDisplay(i);
 	else if ( driver==ID_9341 ) {
