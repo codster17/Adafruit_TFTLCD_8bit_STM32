@@ -171,8 +171,8 @@ class Adafruit_TFTLCD_8bit_STM32 : public Adafruit_GFX {
   void     setRotation(uint8_t x);
        // These methods are public in order for BMP examples to work:
   void     setAddrWindow(int16_t x1, int16_t y1, int16_t x2, int16_t y2);
-  void     invertDisplay(boolean i),
-			pushColors(uint16_t *data, int16_t len, boolean first),
+  void     invertDisplay(bool i),
+			pushColors(uint16_t *data, int16_t len, bool first),
            drawBitmap(int16_t x, int16_t y, int16_t w, int16_t h, const uint16_t * bitmap);
 
   uint16_t readPixel(int16_t x, int16_t y),
